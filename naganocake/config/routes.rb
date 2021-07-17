@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'orders/index'
+    root 'orders#index'
     get 'orders/show'
   end
 

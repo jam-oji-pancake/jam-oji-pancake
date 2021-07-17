@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'genres/index'
     get 'genres/edit'
+    post "genres/:id/edit"
+    patch "genres/:id"
   end
 
   namespace :admins do

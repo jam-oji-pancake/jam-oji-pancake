@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-
+  namespace :public do
+    get 'carts/my_cart'
+  end
+  
+  namespace :public do
+    get 'items/index'
+    get 'items/show'
+  end
+  
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  
   namespace :public do
     get 'deliveries/index'
     get 'deliveries/edit'

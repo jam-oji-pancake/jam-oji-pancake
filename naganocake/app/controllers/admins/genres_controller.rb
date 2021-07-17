@@ -2,7 +2,7 @@ class Admins::GenresController < ApplicationController
 
   def index
     @genres = Genre.all
-    @newgenre = Genre.new
+    @genre = Genre.new
   end
 
   # def new
@@ -16,11 +16,13 @@ class Admins::GenresController < ApplicationController
   end
 
   def edit
+    @genre = Genre.find(params[:id])
   end
 
   def update
-    @genre.update(genre_params)
-    redirect_to request.referer
+    genre = Genre.find(params[:id])
+    genre.update(genre_params)
+    redirect_to admins_genres_path
 
   end
 

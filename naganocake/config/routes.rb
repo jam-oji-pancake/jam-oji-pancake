@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-  
+
   root :to => 'public/homes#top'
-  
   get '/about', to: 'public/homes#about', as: 'about'
-  
-  scope module: :public do
-    resources :customers
-  end
-  
-  
+  get '/mypage',to: 'public/customers#show',as:'mypage'
 
   namespace :public do
     get 'carts/my_cart'
@@ -29,7 +23,11 @@ Rails.application.routes.draw do
     get 'deliveries/edit'
   end
 
-
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/caution'
+  end
 
   namespace :public do
     get 'orders/index'
@@ -64,6 +62,6 @@ Rails.application.routes.draw do
 
   devise_for :custmers
   devise_for :admins
-  devise_for :users
+  # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

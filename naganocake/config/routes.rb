@@ -24,9 +24,8 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
 
-  namespace :public do
-    get 'deliveries/index'
-    get 'deliveries/edit'
+  scope module: :public do
+    resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]
   end
 
 

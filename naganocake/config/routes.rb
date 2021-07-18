@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  
+  root :to => 'public/homes#top'
+  
+  get '/about', to: 'public/homes#about', as: 'about'
+  
+  scope module: :public do
+    resources :customers
+  end
+  
+  
+
   namespace :public do
     get 'carts/my_cart'
   end
@@ -18,11 +29,7 @@ Rails.application.routes.draw do
     get 'deliveries/edit'
   end
 
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/caution'
-  end
+
 
   namespace :public do
     get 'orders/index'

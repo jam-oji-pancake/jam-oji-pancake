@@ -38,10 +38,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'items/index'
-    get 'items/show'
-    get 'items/new'
-    get 'items/edit'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    # get 'items/index'
+    # get 'items/show'
+    # get 'items/new'
+    # get 'items/edit'
   end
 
   namespace :admins do

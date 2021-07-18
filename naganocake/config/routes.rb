@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-  
+
   root :to => 'public/homes#top'
-  
   get '/about', to: 'public/homes#about', as: 'about'
-  
-  scope module: :public do
-    resources :customers
-  end
-  
-  
+  get '/mypage',to: 'public/customers#show',as:'mypage'
 
   namespace :public do
     get 'carts/my_cart'
@@ -28,7 +22,11 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]
   end
 
-
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/caution'
+  end
 
   namespace :public do
     get 'orders/index'
@@ -52,6 +50,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'orders#index'
+    get 'orders/index'
     get 'orders/show'
   end
 
@@ -61,8 +60,16 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
 
-  devise_for :custmers
-  devise_for :admins
-  devise_for :users
+devise_for :admins, controllers: {
+  sessions:      'admins/admins/sessions',
+  passwords:     'admins/admins/passwords',
+}
+devise_for :custmers, controllers: {
+  sessions:      'public/custmers/sessions',
+  passwords:     'public/custmers/passwords',
+  registrations: 'public/custmers/registrations'
+}
+
+  # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

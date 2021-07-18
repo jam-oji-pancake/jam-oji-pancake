@@ -1,2 +1,28 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+<h2>商品詳細</h2>
+
+
+<div>
+  <%= attachment_image_tag(@item, :image, :fill, 100, 100) %>
+</div>
+
+<div>
+  商品名
+  <%= @item.name %>
+</div>
+
+<div>
+  商品説明
+  <%= @item.introduction %>
+</div>
+
+<div>
+  ジャンル
+</div>
+
+<div>
+  税込価格（税抜価格）
+</div>
+
+<div>
+  販売ステータス
+</div>

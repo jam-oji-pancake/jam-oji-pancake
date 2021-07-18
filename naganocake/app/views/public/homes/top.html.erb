@@ -1,2 +1,34 @@
 <h1>Public::Homes#top</h1>
 <p>Find me in app/views/public/homes/top.html.erb</p>
+
+     <% if custmer_signed_in? %>
+     <h1> ログイン中</h1>
+     <h2>  <%= link_to("カスタマーedit",edit_customer_path,{class: "fas fa-home nav-link text-light"}) %></h2>
+     <h2>  <%= link_to("カスタマーshow",customer_path,{class: "fas fa-home nav-link text-light"}) %></h2>
+     <li>
+        <%= link_to("マイページ",public_customers_show_path,{class: "fas fa-home nav-link text-light"}) %>
+      </li>
+     <li>
+        <%= link_to("商品一覧", public_items_index_path, {class: "fas fa-users nav-link text-light"}) %>
+      </li>
+     <li>
+        <%= link_to("カート", public_carts_my_cart_path,{class: "fas fa-book-open nav-link text-light"}) %>
+      </li>
+      <li>
+        <%= link_to("ログアウト",destroy_custmer_session_path, {method: :delete,class: "fas fa-sign-out-alt nav-link text-light"}) %>
+      </li>
+    <% else %>
+    <h1> 未ログイン状態</h1>
+      <li>
+      <%= link_to("About", about_path,{class: "fas fa-home nav-link text-light"} )%>
+      </li>
+      <li>
+        <%= link_to("商品一覧", public_items_index_path,{class: "fas fa-link nav-link text-light"} )%>
+      </li>
+      <li>
+     <%= link_to("新規登録", new_custmer_registration_path,{class: "fas fa-user-plus nav-link text-light"} )%>
+      </li>
+      <li>
+        <%= link_to("ログイン",new_custmer_session_path,{class: "fas fa-sign-in-alt nav-link text-light"} )%>
+      </li>
+    <% end %>

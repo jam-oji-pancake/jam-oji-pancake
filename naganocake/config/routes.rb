@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'orders#index'
+    get 'orders/index'
     get 'orders/show'
   end
 
@@ -60,8 +61,16 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
 
-  devise_for :custmers
-  devise_for :admins
+devise_for :admins, controllers: {
+  sessions:      'admins/admins/sessions',
+  passwords:     'admins/admins/passwords',
+}
+devise_for :custmers, controllers: {
+  sessions:      'public/custmers/sessions',
+  passwords:     'public/custmers/passwords',
+  registrations: 'public/custmers/registrations'
+}
+
   # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

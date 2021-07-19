@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateCustmers < ActiveRecord::Migration[5.2]
+class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
   def change
-    create_table :custmers do |t|
+    create_table :customers do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,7 +31,6 @@ class DeviseCreateCustmers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
       t.string :first_name
       t.string :last_name
       t.string :first_kana
@@ -40,12 +39,13 @@ class DeviseCreateCustmers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :phone
       t.boolean :is_valid ,default: false
+
       t.timestamps null: false
     end
 
-    add_index :custmers, :email,                unique: true
-    add_index :custmers, :reset_password_token, unique: true
-    # add_index :custmers, :confirmation_token,   unique: true
-    # add_index :custmers, :unlock_token,         unique: true
+    add_index :customers, :email,                unique: true
+    add_index :customers, :reset_password_token, unique: true
+    # add_index :customers, :confirmation_token,   unique: true
+    # add_index :customers, :unlock_token,         unique: true
   end
 end

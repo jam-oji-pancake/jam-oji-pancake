@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root :to => 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
   get '/mypage',to: 'public/customers#show',as:'mypage'
+  
 
+  
+  
   namespace :public do
     get 'carts/my_cart'
   end
@@ -22,11 +25,15 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]
   end
 
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/caution'
+  scope module: :public do
+    resources :customers, only: [:edit, :caution, :update]
   end
+
+  # namespace :public do
+  #   get 'customers/show'
+  #   get 'customers/edit'
+  #   get 'customers/caution'
+  # end
 
   namespace :public do
     get 'orders/index'

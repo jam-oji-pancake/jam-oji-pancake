@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     get 'carts/my_cart'
   end
 
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
+  scope module: :public do
+    resources :items, only: [:index, :show ]
+    # get 'items/index'
+    # get 'items/show'
   end
 
   namespace :public do

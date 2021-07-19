@@ -9,16 +9,11 @@ class Admins::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genre = @item.genre
   end
 
   def create
     item = Item.new(item_params)
-    byebug
-    
     item.save
-    # byebug
-
     redirect_to admins_item_path(item)
     # redirect_to request.referer
   end
@@ -28,6 +23,8 @@ class Admins::ItemsController < ApplicationController
 
   def update
   end
+
+  
 
 private
   def item_params

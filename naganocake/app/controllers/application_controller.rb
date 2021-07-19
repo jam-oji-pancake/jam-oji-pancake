@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       admins_root_path
-    when Custmer
+    when Customer
       root_path
     end
   end

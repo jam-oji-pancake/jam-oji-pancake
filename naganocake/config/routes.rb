@@ -16,12 +16,15 @@ Rails.application.routes.draw do
   get '/finish',to: 'public/orders#finish',as:'finish'
   
   
-
-  namespace :public do
-    get 'carts/my_cart'
-  end
-
-
+  # namespace :public do
+  #   get 'carts/my_cart'
+  # end
+ get '/carts' => 'public/carts#my_cart'
+  post '/carts' => 'public/carts#add_item'
+  patch '/carts/:id/' => 'public/carts#update_item', as: 'update_item'
+  delete '/carts/:id/' => 'public/carts#delete_item', as: 'delete_item'
+  delete '/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
+ 
   scope module: :public do
     resources :items, only: [:index, :show ]
   end

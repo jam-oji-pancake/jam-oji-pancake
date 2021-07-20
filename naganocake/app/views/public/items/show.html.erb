@@ -1,3 +1,22 @@
+<table classs>
+  <thead>
+    <tr>
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+    <td>
+      <% @genres.each do |genre| %>
+      <%= genre.name %>
+      <% end %>
+    <td>
+    </tr>
+
+  </tbody>
+</table>
+
 <h2>商品詳細</h2>
 <div>
   <%= attachment_image_tag(@item, :image, :fill, 100, 100) %>
@@ -15,12 +34,9 @@
   ¥<%= @item.price %>円(税込）
 </div>
 
-<div>
-　<select>
-　　　　<option>個数選択</option>
-　　　　<option>1</option>
-　　　　<option>2</option>
-　</select>
-</div>
+<!--<%= form_with model:@item, url:'carts_path', local:true do |f| %>-->
+<!--<%= f.select :count, [["１", "1"], ["2", "2"]], include_blank: "個数選択" %>-->
+<!--<%= f.submit 'カートに入れる'%>-->
+<!--<% end %>-->
 
-<%= link_to "カートに入れる" %>
+

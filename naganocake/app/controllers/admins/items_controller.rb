@@ -13,7 +13,7 @@ class Admins::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.save
+    item.save(item_params)
     redirect_to admins_item_path(item)
     # redirect_to request.referer
   end
@@ -28,7 +28,7 @@ class Admins::ItemsController < ApplicationController
      redirect_to  admins_item_path(item)
   end
 
-  
+
 
 private
   def item_params

@@ -1,2 +1,54 @@
-<h1>Admins::Items#edit</h1>
-<p>Find me in app/views/admins/items/edit.html.erb</p>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2 class="bg-light">商品新規登録</h2>
+  </div>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <%= form_with model:[:admins, @item], local:true do |f| %>
+
+    <div class="form-group">
+      <%= f.label :image, "商品画像" %>
+      <%= f.attachment_field :image, class: "form-control-file image" %>
+    </div>
+
+    <div class="form-group",>
+      <%= f.label :商品名 %>
+      <%= f.text_field :name, placeholder: "商品名" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :商品説明 %>
+      <%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %>
+    </div>
+
+    <div class="form-group">0
+      <%= f.label :ジャンル %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :税抜き価格 %>
+      <%= f.text_field :price, placeholder: "1000" %> 円
+    </div>
+
+    <div class="form-group">
+      <%= f.label :販売ステータス %>
+      <%= f.radio_button "is_sale","販売中"%>
+      <%= f.label "is_sale", "販売中" %>
+      <%= f.radio_button "is_sale","販売停止中" %>
+      <%= f.label "is_sale", "販売停止中" %>
+
+      <!--%= f.radio_button "is_sale", value: :true %>-->
+      <!--%= f.label "is_sale", "販売中",{value: :ture, style: "display: inline-block;"} %>-->
+      <!--%= f.radio_button "is_sale", value: :false %>-->
+      <!--%= f.label "is_sale", "販売停止中",{value: :false, style: "display: inline-block;"} %>-->
+    </div>
+
+    <div class="form-group">
+      <%= f.submit '変更を保存', class: 'btn btn-success' %>
+    </div>
+
+    <% end %>
+  </div>
+ </div>
+</div>

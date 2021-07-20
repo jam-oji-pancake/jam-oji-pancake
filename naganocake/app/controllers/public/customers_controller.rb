@@ -1,4 +1,4 @@
-class Public::CustomersController < Public::ApplicationController
+class Public::CustomersController < ApplicationController
   def mypage
     @customer = Customer.find(current_customer.id)
   end
@@ -8,6 +8,13 @@ class Public::CustomersController < Public::ApplicationController
   end
 
   def mypage_caution
+  end
+  
+  def taikai
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_valid:true)
+    reset_session
+    redirect_to root_path
   end
 
   def update

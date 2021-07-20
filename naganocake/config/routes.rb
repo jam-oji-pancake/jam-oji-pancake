@@ -8,9 +8,14 @@ Rails.application.routes.draw do
   get '/mypage/edit',to: 'public/customers#mypage_edit',as:'mypage_edit'
   get '/mypage/caution',to: 'public/customers#mypage_caution',as:'mypage_cation'
   
+  patch '/mypage/taikai' => 'public/customers#taikai', as: 'customer_taikai'
+  put '/mypage/taikai'=> 'public/customers#taikai'
+  
   get '/select',to: 'public/orders#select',as:'select'
   get '/confirm',to: 'public/orders#confirm',as:'confirm'
   get '/finish',to: 'public/orders#finish',as:'finish'
+  
+  
 
   namespace :public do
     get 'carts/my_cart'

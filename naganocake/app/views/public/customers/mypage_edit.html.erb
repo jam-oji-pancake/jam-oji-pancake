@@ -1,5 +1,6 @@
-<%= form_with model:@customer, local:true do |f| %>
+<h2>登録情報編集</h2>
 
+<%= form_with model:@customer, local:true do |f| %>
  <table>
     <thead></thead>
     <tbody>
@@ -50,9 +51,10 @@
       <tr>
         <div class="actions">
           <td> <%= f.submit "更新" %></td>
+          <td><%= link_to '退会する', mypage_cation_path,class: "btn btn-outline-secondary text-dark" %></td>
         </div>
       </tr>
-  
+      
     </tbody>
   </table>
   <% end %>

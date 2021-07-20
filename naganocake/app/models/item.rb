@@ -11,7 +11,4 @@ class Item < ApplicationRecord
     (self.price * 1.10).round
    end
 
-# //= require jquery3
-# //= require popper
-# //= require bootstrap-sprockets
 end

@@ -5,10 +5,10 @@ class Item < ApplicationRecord
 
    attachment :image
 
-   enum is_sale: {販売中: true, 販売停止中:false}
+   enum is_sale: {販売中: true, 販売停止中: false }
 
    def add_tax_price
-        (self.price * 1.1).round
+    (self.price * 1.10).round
    end
 
 end

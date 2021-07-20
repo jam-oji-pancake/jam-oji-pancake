@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_091650) do
+ActiveRecord::Schema.define(version: 2021_07_19_141147) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

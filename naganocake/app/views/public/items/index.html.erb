@@ -1,4 +1,23 @@
 
+<table classs>
+  <thead>
+    <tr>
+      <th>ジャンル</th>
+    </tr>  
+  </thead>
+
+  <tbody>
+    <tr>
+    <td>  
+      <% @genres.each do |genre| %>
+      <%= genre.name %>
+      <% end %>
+    <td>  
+    </tr>
+
+  </tbody>
+</table>
+
 <h2>
   商品一覧
   全<%= @all_items.count %>件

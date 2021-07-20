@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :customers
+  # devise_for :customers
   root :to => 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
-  get '/mypage',to: 'public/customers#show',as:'mypage'
+  
+  get '/mypage',to: 'public/customers#mypage',as:'mypage'
+  get '/mypage/edit',to: 'public/customers#mypage_edit',as:'mypage_edit'
+  get '/mypage/caution',to: 'public/customers#mypage_caution',as:'mypage_cation'
+  
+  patch '/mypage/taikai' => 'public/customers#taikai', as: 'customer_taikai'
+  put '/mypage/taikai'=> 'public/customers#taikai'
+  
+  get '/select',to: 'public/orders#select',as:'select'
+  get '/confirm',to: 'public/orders#confirm',as:'confirm'
+  get '/finish',to: 'public/orders#finish',as:'finish'
+  
+  
 
   namespace :public do
     get 'carts/my_cart'
@@ -26,19 +38,22 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]
   end
 
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/caution'
+  scope module: :public do
+    resources :customers, only: [:update]
+  end
+  
+  scope module: :public do
+    resources :orders, only: [:index, :show]
   end
 
-  namespace :public do
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/select'
-    get 'orders/confirm'
-    get 'orders/finish'
-  end
+
+  # namespace :public do
+  #   get 'orders/index'
+  #   get 'orders/show'
+  #   get 'orders/select'
+  #   get 'orders/confirm'
+  #   get 'orders/finish'
+  # end
 
   namespace :admins do
     # get 'genres/index'
@@ -70,11 +85,11 @@ devise_for :admins, controllers: {
   sessions:      'admins/admins/sessions',
   passwords:     'admins/admins/passwords',
 }
-# devise_for :custmers, controllers: {
-#   sessions:      'public/custmers/sessions',
-#   passwords:     'public/custmers/passwords',
-#   registrations: 'public/custmers/registrations'
-# }
+ devise_for :customers, controllers: {
+   sessions:      'public/customers/sessions',
+   passwords:     'public/customers/passwords',
+   registrations: 'public/customers/registrations'
+ }
 
   # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -20,8 +20,9 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <h2>カスタマーでログイン中</h2>
+
               <li><%= link_to 'マイページ', mypage_path,class: "btn btn-outline-secondary text-dark" %></li>
-              <li><%= link_to '商品一覧', public_items_index_path,class: "btn btn-outline-secondary text-dark" %></li>
+              <li><%= link_to '商品一覧', items_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'カート', public_carts_my_cart_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: "btn btn-outline-secondary text-dark" %></li>
 
@@ -36,7 +37,7 @@
               <% else %>
             <h2>未ログイン</h2>
               <li><%= link_to 'About', about_path,class: "btn btn-outline-secondary text-dark" %></li>
-              <li><%= link_to '商品一覧', public_items_index_path,class: "btn btn-outline-secondary text-dark" %></li>
+              <li><%= link_to '商品一覧', items_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '新規登録', new_customer_registration_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-secondary text-dark" %></li>
             <% end %>

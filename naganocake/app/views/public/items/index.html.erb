@@ -1,34 +1,44 @@
+<div class="container">
+  <div class="row">
 
-<table classs>
-  <thead>
-    <tr>
-      <th>ジャンル</th>
-    </tr>  
-  </thead>
+  <div class='col-3'>
+    <table classs="table table-hover">
+      <thead>
+        <tr>
+          <th>ジャンル</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <tr>
-    <td>  
-      <% @genres.each do |genre| %>
-      <%= genre.name %>
-      <% end %>
-    <td>  
-    </tr>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= genre.name %>
+            <td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-  </tbody>
-</table>
+  <div class='col-8'>
+    <h2>商品一覧</h2><h4>全<%= @all_items.count %>件</h4>
 
-<h2>
-  商品一覧
-  全<%= @all_items.count %>件
-</h2>
 
-<% @items.each do |item| %>
+    <div class="d-flex flex-wrap">
+    <% @items.each do |item| %>
+    <div>
+      <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+      <p><%= item.name %></p>
+      <%= item.price %>円
+      <!--%= item.add_tax_price.to_s(:delimited) %> 円-->
 
-<div>
-  <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-  <%= item.name %>
-  <%= item.price %>円
+
+    </div>
+    <% end %>
+    </div>
+    <%= paginate @items %>
+  </div>
+
+  </div>
 </div>
-<% end %>
-<%= paginate @items %>

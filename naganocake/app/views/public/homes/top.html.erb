@@ -1,8 +1,12 @@
 <h1>Public::Homes#top</h1>
 <p>Find me in app/views/public/homes/top.html.erb</p>
 <%= link_to 'カスタマーshowへ', mypage_path,class: "btn btn-outline-secondary text-dark" %>
-<%= link_to 'カスタマーeditへ', public_customers_edit_path,class: "btn btn-outline-secondary text-dark" %>
+<%= link_to 'カスタマーeditへ', mypage_edit_path,class: "btn btn-outline-secondary text-dark" %>
 
 <div>
 <%= link_to '管理者側ログイン画面へ', new_admin_session_path,class: "btn btn-outline-secondary text-dark" %>
+</div>
+
+<div>
+<%= link_to '全ての商品を見る', items_path %>
 </div>

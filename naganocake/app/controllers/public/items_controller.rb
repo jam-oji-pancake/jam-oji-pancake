@@ -1,5 +1,9 @@
 class Public::ItemsController < ApplicationController
   def index
+    @all_items = Item.all
+    @items = Item.page(params[:page]).reverse_order
+    @genres = Genre.all
+
   end
 
   def show

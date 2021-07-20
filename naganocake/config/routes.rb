@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  # devise_for :customers
   root :to => 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
   
   get '/mypage',to: 'public/customers#mypage',as:'mypage'
   get '/mypage/edit',to: 'public/customers#mypage_edit',as:'mypage_edit'
   get '/mypage/caution',to: 'public/customers#mypage_caution',as:'mypage_cation'
+  
   patch '/mypage/taikai' => 'public/customers#taikai', as: 'customer_taikai'
   put '/mypage/taikai'=> 'public/customers#taikai'
   
@@ -13,6 +15,12 @@ Rails.application.routes.draw do
   get '/confirm',to: 'public/orders#confirm',as:'confirm'
   get '/finish',to: 'public/orders#finish',as:'finish'
   
+
+
+  
+  # namespace :public do
+  #   get 'carts/my_cart'
+  # end
 
   get '/carts' => 'public/carts#my_cart'
   post '/carts' => 'public/carts#add_item'
@@ -61,6 +69,14 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+
+
+
+    # get 'items/index'
+    # get 'items/show'
+    # get 'items/new'
+    # get 'items/edit'
+
   end
 
   namespace :admins do

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Naganocake</title>
-    <%= csrf_meta_tags %>
+    <%= csrf_meta_tag %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -32,7 +32,7 @@
               <li><%= link_to '注文一覧', admins_orders_index_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'ジャンル一覧', admins_genres_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-outline-secondary text-dark" %></li>
-          
+
               <% else %>
             <h2>未ログイン</h2>
               <li><%= link_to 'About', about_path,class: "btn btn-outline-secondary text-dark" %></li>

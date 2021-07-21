@@ -3,6 +3,9 @@ class Public::CartsController < ApplicationController
 
   def my_cart
     @cart_list = Cart.all
+    # @cart = Cart.find(params[:id])
+    
+    
 
   end
 

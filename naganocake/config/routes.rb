@@ -70,9 +70,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers
+    # get 'customers/index'
+    # get 'customers/show'
+    # get 'customers/edit'
   end
 
 devise_for :admins, controllers: {

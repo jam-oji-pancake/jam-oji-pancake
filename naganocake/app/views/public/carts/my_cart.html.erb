@@ -25,16 +25,17 @@
         <td><%= carts.count %></td>
         <td><%= (carts.subtotal_price).to_i %></td>
         <!--%= (carts.item.price).to_i %>*%= (carts.count).to_i %>-->
+        <td><%= link_to '削除', delete_item_path(carts), method: :delete, data: { confirm: '商品をカートから削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
       <% @sum += (carts.subtotal_price).to_i %>
     <% end %>
     </tbody>
-    
+
     <table class="table">
       <thead>合計金額</thead>
       <tbody><%= @sum  %></tbody>
     </table>
-    
+
 
   </div>
 </div>

@@ -4,8 +4,8 @@ class Public::CartsController < ApplicationController
   def my_cart
     @cart_list = Cart.all
     # @cart = Cart.find(params[:id])
-    
-    
+
+
 
   end
 
@@ -28,6 +28,10 @@ class Public::CartsController < ApplicationController
   end
 
   def delete_item
+    @cart = Cart.find(params[:id])
+    # cart = @cart.item.find(params[:id])
+    @cart.destroy
+    redirect_to carts_path
 
 
   end

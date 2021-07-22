@@ -1,0 +1,36 @@
+<h2>商品詳細</h2>
+
+
+<div>
+  <%= attachment_image_tag(@item, :image, :fill, 100, 100) %>
+</div>
+
+<div>
+  商品名
+  <%= @item.name %>
+</div>
+
+<div>
+  商品説明
+  <%= @item.introduction %>
+</div>
+
+<div>
+  ジャンル
+  <%= @item.genre.name %>
+</div>
+
+<div>
+  税込価格（税抜価格）
+  <%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円
+  <!--%= number_to_currency(@item.add_tax_price, unit: "¥" ) %>(%= number_to_currency(@item.price, unit: "¥") %>)円-->
+</div>
+
+<div>
+  販売ステータス
+  <%= @item.is_sale %>
+</div>
+
+<div>
+ <%= link_to '編集する', edit_admins_item_path(@item), class: 'btn btn-success' %>
+</div>

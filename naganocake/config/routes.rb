@@ -3,18 +3,18 @@ Rails.application.routes.draw do
   # devise_for :customers
   root :to => 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
-  
+
   get '/mypage',to: 'public/customers#mypage',as:'mypage'
   get '/mypage/edit',to: 'public/customers#mypage_edit',as:'mypage_edit'
   get '/mypage/caution',to: 'public/customers#mypage_caution',as:'mypage_cation'
   
   patch '/mypage/taikai' => 'public/customers#taikai', as: 'customer_taikai'
   put '/mypage/taikai'=> 'public/customers#taikai'
-  
+
   get '/select',to: 'public/orders#select',as:'select'
-  get '/confirm',to: 'public/orders#confirm',as:'confirm'
+  post '/confirm',to: 'public/orders#confirm',as:'confirm'
   get '/finish',to: 'public/orders#finish',as:'finish'
-  
+
 
 
   
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   patch '/carts/:id/' => 'public/carts#update_item', as: 'update_item'
   delete '/carts/:id/' => 'public/carts#delete_item', as: 'delete_item'
   delete '/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
- 
+
   scope module: :public do
     resources :items, only: [:index, :show ]
   end
@@ -49,9 +49,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:update]
   end
-  
+
   scope module: :public do
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :create]
   end
 
 

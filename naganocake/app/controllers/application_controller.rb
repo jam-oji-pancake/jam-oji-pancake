@@ -10,10 +10,17 @@ class ApplicationController < ActionController::Base
      end
    end
 
-  
-
-
-
+  # def current_cart
+  #   if current_customer
+  #     # ユーザーとカートの紐付け
+  #     current_cart = current_customer.cart || current_user.create_cart!
+  #   else
+  #     # セッションとカートの紐付け
+  #     current_cart = Cart.find_by(id: session[:cart_id]) || Cart.add_cart
+  #     session[:cart_id] ||= current_cart.id
+  #   end
+  #   current_cart
+  # end
 
   protected
 

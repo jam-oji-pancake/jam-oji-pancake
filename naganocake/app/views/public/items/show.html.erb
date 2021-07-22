@@ -15,7 +15,9 @@
   ¥<%= @item.price %>円(税込）
 </div>
 
-<%= form_with model:@item, url:'carts_path', local:true do |f| %>
-<%= f.select :count, [["１", "1"], ["2", "2"]], include_blank: "個数選択" %>
+<%= form_with model:@cart, local:true do |f| %>
+
+<%= f.hidden_field :item_id, value: @item.id %>
+<%= f.select :count, [["1", "1"], ["2", "2"]], include_blank: "個数選択" %>
 <%= f.submit 'カートに入れる'%>
 <% end %>

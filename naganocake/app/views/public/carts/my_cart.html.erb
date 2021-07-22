@@ -23,7 +23,7 @@
           <%= attachment_image_tag(carts.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
           <%= carts.item.name %>
         </td>
-        <td><%= carts.item.price %></td>
+        <td><%= carts.item.add_tax_price.to_s(:delimited) %></td>
         <td><%= carts.count %></td>
         <td>
           <%= form_with model:carts, url:update_item_path(carts), local:true do |f| %>
@@ -31,8 +31,7 @@
           <%= f.submit "変更" %>
           <% end %>
         </td>
-        <td><%= (carts.subtotal_price).to_i %></td>
-        <!--%= (carts.item.price).to_i %>*%= (carts.count).to_i %>-->
+        <td><%= (carts.subtotal_price).to_s(:delimited) %></td>
         <td><%= link_to '削除', delete_item_path(carts), method: :delete, data: { confirm: '商品をカートから削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
       <% @sum += (carts.subtotal_price).to_i %>
@@ -44,6 +43,8 @@
       <thead>合計金額</thead>
       <tbody><%= @sum  %></tbody>
     </table>
+
+    <%= link_to '情報入力に進む', select_path, class: "btn btn-success",data: {"turbolinks"=>false} %>
 
 
   </div>

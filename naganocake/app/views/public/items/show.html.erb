@@ -18,6 +18,7 @@
 </table>
 
 <h2>商品詳細</h2>
+
 <div>
   <%= attachment_image_tag(@item, :image, :fill, 100, 100) %>
 </div>
@@ -31,7 +32,7 @@
 </div>
 
 <div>
-  ¥<%= @item.price %>円(税込）
+  ¥<%= @item.add_tax_price.to_s(:delimited) %>円(税込）
 </div>
 
 <%= form_with model:@cart, url: carts_path, local:true do |f| %>

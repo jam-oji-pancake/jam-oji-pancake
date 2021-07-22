@@ -3,26 +3,21 @@ class Public::CartsController < ApplicationController
 
   def my_cart
     @cart_list = Cart.all
-    # @cart = Cart.find(params[:id])
-
-
-
   end
 
   def add_item
     @cart = Cart.new(cart_params)
     @cart.customer_id = current_customer.id
-    # @item = Item.find(params[:item_id])
-    # @cart = @item.carts.new(customer_id: current_customer.id)
-
     @cart.save
     redirect_to carts_path
-
-
-
   end
 
   def update_item
+    @cart = Cart.find(params[:id])
+   
+    @cart.update(cart_params)
+
+    redirect_to carts_path
 
   end
 
@@ -31,11 +26,11 @@ class Public::CartsController < ApplicationController
     # cart = @cart.item.find(params[:id])
     @cart.destroy
     redirect_to carts_path
-
-
   end
 
   def destroy_all
+    Cart.destroy_all
+    redirect_to root_path
   end
 
   private

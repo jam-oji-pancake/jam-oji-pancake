@@ -12,7 +12,6 @@ class Public::CartsController < ApplicationController
   def add_item
     @cart = Cart.new(cart_params)
     @cart.customer_id = current_customer.id
-
     # @item = Item.find(params[:item_id])
     # @cart = @item.carts.new(customer_id: current_customer.id)
 

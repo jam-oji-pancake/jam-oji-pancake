@@ -26,15 +26,15 @@
     <%= image_tag 'bread_panya.png',:size =>'800x400' %>
     <p>
       </br>
-      ようこそ、ながのCAKEへ！</br>
-      このサイト、はケーキ販売のECサイトになります。　　</br>
-      会員でない方も商品の閲覧は出来ますが、</br>
-      購入には会員登録が必要です。</br>
+      　ようこそ、ながのCAKEへ！</br>
+      　このサイトは、ケーキ販売のECサイトになります。　　</br>
+      　会員でない方も商品の閲覧は出来ますが、</br>
+      　購入には会員登録が必要です。</br>
       </br>
     </p>
     </div>
     
-    <h2>新着商品</h2><h4>全<%= @all_items.count %>件</h4>
+    <h2>新着商品</h2>
     <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
       <div>

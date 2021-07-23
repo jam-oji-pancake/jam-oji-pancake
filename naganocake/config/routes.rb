@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   put '/mypage/taikai'=> 'public/customers#taikai'
 
   get '/select',to: 'public/orders#select',as:'select'
-  post '/confirm',to: 'public/orders#confirm',as:'confirm'
+  get '/confirm',to: 'public/orders#confirm'
+  post '/confirm',to: 'public/orders#confirm'
   get '/finish',to: 'public/orders#finish',as:'finish'
 
 

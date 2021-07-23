@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
   def create
     @order = Order.new
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to finish_path
   end
 
   def index
@@ -17,11 +20,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_list = Cart.all
     @customer = current_customer
     @order = Order.new(order_params)
     @order.name = @customer.first_name,@customer.last_name
-
-    # @cart_list = Cart.all
+    @order.post_code = @customer.post_code
+    @order.address = @customer.address
     # @order = Order.new
   end
 

@@ -3,6 +3,10 @@ class Public::CartsController < ApplicationController
 
   def my_cart
     @cart_list = Cart.all
+    # @cart = Cart.find(params[:id])
+
+
+
   end
 
   def add_item
@@ -29,8 +33,10 @@ class Public::CartsController < ApplicationController
   end
 
   def destroy_all
-    Cart.destroy_all
-    redirect_to root_path
+
+   @cart.destroy_all
+   redirect_to carts_path
+
   end
 
   private

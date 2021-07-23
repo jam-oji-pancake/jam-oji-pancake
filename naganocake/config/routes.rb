@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   delete '/carts/:id/' => 'public/carts#delete_item', as: 'delete_item'
   # delete '/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
   
-  post '/orders_create_jinbo' => 'admins/orders#create_jinbo'
-
   scope module: :public do
     resources :items, only: [:index, :show ]
   end

@@ -10,10 +10,4 @@ class Admins::OrdersController < ApplicationController
   def update
   end
 
-  def create_jinbo
-    order = Order.new(order_params)
-    order.save
-    redirect_to admins_root_path(item)
-    
-  end
 end

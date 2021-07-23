@@ -66,8 +66,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'orders#index'
-    get 'orders/index'
-    get 'orders/show'
+    resources :orders, only: [:index, :show, :update]
+    # get 'orders/index'
+    # get 'orders/show'
   end
 
   namespace :admins do

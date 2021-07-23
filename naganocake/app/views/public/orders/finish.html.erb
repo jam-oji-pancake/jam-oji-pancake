@@ -1,2 +1,8 @@
 <h1>Public::Orders#finish</h1>
 <p>Find me in app/views/public/orders/finish.html.erb</p>
+
+<%= form_tag(controller: "orders", action:"finish") do %>
+<%= radio_button_tag("r1", "radio1") %>
+<%= label_tag("r1_radio1", "test") %>
+<%= submit_tag("送信") %>
+<% end %>

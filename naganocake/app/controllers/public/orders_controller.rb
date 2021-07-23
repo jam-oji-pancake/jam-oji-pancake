@@ -19,8 +19,19 @@ class Public::OrdersController < ApplicationController
   def confirm
     @customer = current_customer
     @order = Order.new(order_params)
-    @order.name = @customer.first_name,@customer.last_name
 
+    #   if params["address"] then
+    if
+      params[:confirm_adress] = 0
+        @order.name = @customer.first_name,@customer.last_name
+    elsif
+      params[:confirm_adress] = 2
+        @order.name = @customer.last_name
+    end
+      # elsif params["2"] then
+      #   @order = Order.new(order_params)
+      # end
+    # end
     # @cart_list = Cart.all
     # @order = Order.new
   end
@@ -31,7 +42,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :payment )
+    params.require(:order).permit(:post_code, :address, :name, :payment,)
   end
 
 end

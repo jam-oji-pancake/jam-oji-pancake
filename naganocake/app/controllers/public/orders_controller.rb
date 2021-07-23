@@ -12,28 +12,31 @@ class Public::OrdersController < ApplicationController
   def select
     @order = Order.new
     @customer = current_customer
-    # @deliveries = @customer.deliveries
+    @deliveries = @customer.deliveries
     @order.customer_id = @customer.id
+    @customer = current_customer
   end
 
   def confirm
     @customer = current_customer
+    # @cart_items = @customer.carts
     @order = Order.new(order_params)
-
-    #   if params["address"] then
-    if
-      params[:confirm_adress] = 0
-        @order.name = @customer.first_name,@customer.last_name
-    elsif
-      params[:confirm_adress] = 2
-        @order.name = @customer.last_name
+    @order.payment = params[:order][:payment]
+    if params[:order][:delivery_adress] == "0"
+      @order.post_code = @customer.post_code
+      @order.address = @customer.address
+      @order.name = @customer.full_name
+    # elsif params[:order][:delivery_adress] == "1"
+    #   # @sta = params[:order][:order_address].to_i
+    #   @order_address = Address.find(@sta)
+    #   @order.post_code = @order_address.postal_code
+    #   @order.address = @order_address.address
+    #   @order.name = @order_address.dear_name
+    elsif params[:order][:delivery_adress] == "2"
+      @order.post_code = params[:order][:post_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
-      # elsif params["2"] then
-      #   @order = Order.new(order_params)
-      # end
-    # end
-    # @cart_list = Cart.all
-    # @order = Order.new
   end
 
   def finish

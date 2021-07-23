@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <div class="col-10">
     <h2>注文情報確認</h2>
     <!--<table class="table">-->
     <!--<thead>-->
@@ -32,24 +33,24 @@
     <!--  <thead>合計金額</thead>-->
     <!--  <tbody>%= @sum  %></tbody>-->
     <!--</table>-->
-    <h3>支払い方法</h3>
-    <p>
-      支払方法
-      <%= @order.payment %>
-    </p>
-    <h3>お届け先</h3>
-    <p>
+
+
+    <div>
+      <strong>支払い方法</strong>
+       <%= @order.payment %>
+    </div>
+
+    <div>
+    <strong>お届け先</strong>
      <%= @order.post_code %>
-    </p>
-    <p>
      <%= @order.address %>
-     </p>
-     <p>
      <%= @order.name %>
-     </p>
+    </div>
+
     <%= form_with model:@order, url: orders_path, local:true do |f| %>
-    <!--%= f.hidden_field :payment %>
+    <!--%= f.hidden_field :payment %>-->
     <%= f.submit '注文を確定する'%>
     <% end %>
+    </div>
   </div>
 </div>

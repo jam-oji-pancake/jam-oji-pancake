@@ -2,7 +2,8 @@ class Public::CartsController < ApplicationController
   before_action :authenticate_customer!
 
   def my_cart
-    @cart_list = Cart.all
+    @customer = current_customer
+    @cart_list = @customer.carts
   end
 
   def add_item
@@ -14,7 +15,7 @@ class Public::CartsController < ApplicationController
 
   def update_item
     @cart = Cart.find(params[:id])
-   
+
     @cart.update(cart_params)
 
     redirect_to carts_path

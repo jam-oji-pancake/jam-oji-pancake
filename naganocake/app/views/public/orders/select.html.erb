@@ -1,2 +1,33 @@
-<h1>Public::Orders#select</h1>
-<p>Find me in app/views/public/orders/select.html.erb</p>
+<h2>注文情報入力</h2>
+<div>
+  <h3>支払い方法</h3>
+  <%= form_with model:@order, url:confirm_path, local:true do |f| %>
+      <%= f.radio_button :payment, 'クレジットカード' %>
+      <%= f.label :payment, 'クレジットカード', value: 'クレジットカード' %>
+    <%= f.radio_button :payment, '銀行振込' %>'
+      <%= f.label :payment, '銀行振込', value: '銀行振込' %>
+</div>
+<div>
+    <h3>お届け先</h3>
+      <%= f.radio_button :delivery_adress, '0' %>
+       <%= f.label :delivery_adress, 'ご自身の住所', value: 0 %>
+       <%= @customer.post_code %>
+       <%= @customer.address %>
+       <%= @customer.first_name %> <%= @customer.last_name %>
+
+      <!--%= f.label :receive_news, '登録済み住所から選択', value: 1 %>-->
+      <!--    %= f.collection_select :post_code, :address, :name, @deliveries, :post_code, :address, :name %>-->
+      <!--%= f.radio_button :receive_news, '1' %>-->
+
+       <%= f.radio_button :delivery_adress, '2' %>
+       <%= f.label :delivery, '新しいお届け先', value: 2 %>
+           <h4>郵便番号（ハイフンなし）</h4>
+            <%= f.text_field :post_code, :placeholder => "0000000" %>
+           <h4>住所</h4>
+            <%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %>
+           <h4>宛名</h4>
+            <%= f.text_field :name, :placeholder => "令和道子" %>
+     <%= f.submit '注文確認画面へ進む' %>
+    <% end %>
+</div>
+

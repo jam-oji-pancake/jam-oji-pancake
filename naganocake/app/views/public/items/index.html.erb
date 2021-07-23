@@ -24,13 +24,14 @@
   <div class='col-8'>
     <h2>商品一覧</h2><h4>全<%= @all_items.count %>件</h4>
 
-
     <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
     <div>
+      <%= link_to item_path(item.id) do %>
       <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
       <p><%= item.name %></p>
-      <%= item.price %>円
+      <% end %>
+      <%= item.add_tax_price.to_s(:delimited) %>円
       <!--%= item.add_tax_price.to_s(:delimited) %> 円-->
     </div>
     <% end %>

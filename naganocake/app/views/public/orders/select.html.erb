@@ -4,7 +4,7 @@
   <%= form_with model:@order, url:confirm_path, local:true do |f| %>
       <%= f.radio_button :payment, 'クレジットカード' %>
       <%= f.label :payment, 'クレジットカード', value: 'クレジットカード' %>
-    <%= f.radio_button :payment, '銀行振込' %>'
+    <%= f.radio_button :payment, '銀行振込' %>
       <%= f.label :payment, '銀行振込', value: '銀行振込' %>
 </div>
 <div>
@@ -15,12 +15,12 @@
        <%= @customer.address %>
        <%= @customer.first_name %> <%= @customer.last_name %>
 
-      <!--%= f.label :receive_news, '登録済み住所から選択', value: 1 %>-->
-      <!--    %= f.collection_select :post_code, :address, :name, @deliveries, :post_code, :address, :name %>-->
-      <!--%= f.radio_button :receive_news, '1' %>-->
+      <%= f.radio_button :delivery_adress, '1' %>
+      <%= f.label :delivery_adress, '登録済み住所から選択', value: 1 %>
+      <!--%= f.collection_select :delivery_adress, @deliveries.pluck(:name, :address, :post_code), :address, :post_code, :name %>-->
 
        <%= f.radio_button :delivery_adress, '2' %>
-       <%= f.label :delivery, '新しいお届け先', value: 2 %>
+       <%= f.label :delivery_adress, '新しいお届け先', value: 2 %>
            <h4>郵便番号（ハイフンなし）</h4>
             <%= f.text_field :post_code, :placeholder => "0000000" %>
            <h4>住所</h4>

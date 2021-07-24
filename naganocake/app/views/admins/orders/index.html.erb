@@ -15,11 +15,11 @@
       <tr>
         <td><%= order.created_at %></td>
         <td>
-          <%= link_to admins_customer_path(customer.id) do %>
+          <%= link_to admins_customer_path(order.customer.id) do %>
             <%= order.customer.first_name %><%= order.customer.last_name %>
           <% end %>
         </td>
-        <td><%= order.count %></td>
+        <td><%= order.total_count %></td>
         <td><%= order.order_status %></td>
       </tr>
       <% end %>

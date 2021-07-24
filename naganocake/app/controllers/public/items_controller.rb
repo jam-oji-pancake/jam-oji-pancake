@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
-    @all_items = Item.all
-    @items = Item.page(params[:page]).reverse_order
+    @all_items = Item.where(is_sale: true)
+    @items = @all_items.page(params[:page]).reverse_order
     @genres = Genre.all
   end
 

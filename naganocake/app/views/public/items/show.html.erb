@@ -1,3 +1,22 @@
+<table classs>
+  <thead>
+    <tr>
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+    <td>
+      <% @genres.each do |genre| %>
+      <%= genre.name %>
+      <% end %>
+    <td>
+    </tr>
+  
+  </tbody>
+</table>
+
 <h2>商品詳細</h2>
 
 <div>
@@ -13,16 +32,12 @@
 </div>
 
 <div>
-  ¥<%= @item.price %>円(税込）
+  ¥<%= @item.add_tax_price.to_s(:delimited) %>円(税込）
 </div>
 
 <%= form_with model:@cart, url: carts_path, local:true do |f| %>
-<!--@cartでcartsコントローラー内のadd_itemに飛ばしたいる-->
-<%= f.select :count, [["１", "1"], ["2", "2"],["3", "3"]], include_blank: "個数選択" %>
+<%= f.select :count, [["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"]], include_blank: "個数選択" %>
 <%= f.hidden_field :item_id, :value => @item.id %>
-<!--add_item内はcreateのためidは定義できないため上でitem_idでカラム内にデータを保存-->
 <%= f.submit 'カートに入れる'%>
 <% end %>
-
-
 

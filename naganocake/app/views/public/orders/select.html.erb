@@ -1,32 +1,38 @@
-<h2>注文情報入力</h2>
+<h4>注文情報入力</h4>
 <div>
-  <h3>支払い方法</h3>
+  <h5>支払い方法</h5>
   <%= form_with model:@order, url:confirm_path, local:true do |f| %>
+    <p>
       <%= f.radio_button :payment, 'クレジットカード' %>
       <%= f.label :payment, 'クレジットカード', value: 'クレジットカード' %>
-    <%= f.radio_button :payment, '銀行振込' %>
+    </p>
+    <p>
+      <%= f.radio_button :payment, '銀行振込' %>
       <%= f.label :payment, '銀行振込', value: '銀行振込' %>
 </div>
 <div>
-    <h3>お届け先</h3>
-      <%= f.radio_button :delivery_adress, '0' %>
-       <%= f.label :delivery_adress, 'ご自身の住所', value: 0 %>
-       <%= @customer.post_code %>
-       <%= @customer.address %>
-       <%= @customer.first_name %> <%= @customer.last_name %>
-
-      <%= f.radio_button :delivery_adress, '1' %>
-      <%= f.label :delivery_adress, '登録済み住所から選択', value: 1 %>
-      <!--%= f.collection_select :delivery_adress, @deliveries.pluck(:name, :address, :post_code), :address, :post_code, :name %>-->
-
-       <%= f.radio_button :delivery_adress, '2' %>
-       <%= f.label :delivery_adress, '新しいお届け先', value: 2 %>
-           <h4>郵便番号（ハイフンなし）</h4>
+  <h5>お届け先</h5>
+    <h6><%= f.radio_button :delivery_adress, '0' %><%= f.label :delivery_adress, 'ご自身の住所', value: 0 %></h6>
+      <p>
+         <%= @customer.post_code %>
+         <%= @customer.address %>
+         <%= @customer.first_name %> <%= @customer.last_name %>
+      </p>
+    <h6><%= f.radio_button :delivery_adress, '1' %><%= f.label :delivery_adress, '登録済み住所から選択', value: 1 %></h6>
+      <p><%= f.collection_select :order_delivery, @deliveries, :id, :view_post_address_name %></p>
+    <h6><%= f.radio_button :delivery_adress, '2' %><%= f.label :delivery_adress, '新しいお届け先', value: 2 %></h6>
+          <p>
+           郵便番号（ハイフンなし）
             <%= f.text_field :post_code, :placeholder => "0000000" %>
-           <h4>住所</h4>
+          </p>
+          <p>
+           住所
             <%= f.text_field :address, :placeholder => "東京都渋谷区代々木神園町0-0" %>
-           <h4>宛名</h4>
+          </p>
+          <p>
+           宛名
             <%= f.text_field :name, :placeholder => "令和道子" %>
+          </p>
      <%= f.submit '注文確認画面へ進む' %>
     <% end %>
 </div>

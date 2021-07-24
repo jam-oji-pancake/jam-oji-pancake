@@ -1,9 +1,6 @@
 class Public::OrdersController < ApplicationController
   def create
     @order = Order.new
-    @order.customer_id = current_customer.id
-    @order.save
-    redirect_to finish_path
   end
 
   def index
@@ -21,22 +18,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_list = Cart.all
     @customer = current_customer
-    # @cart_items = @customer.carts
+    @cart_items = @customer.carts
     @order = Order.new(order_params)
-
+    @order.send_cost = 800
     @order.payment = params[:order][:payment]
     if params[:order][:delivery_adress] == "0"
       @order.post_code = @customer.post_code
       @order.address = @customer.address
       @order.name = @customer.full_name
-    # elsif params[:order][:delivery_adress] == "1"
-    #   # @sta = params[:order][:order_address].to_i
-    #   @order_address = Address.find(@sta)
-    #   @order.post_code = @order_address.postal_code
-    #   @order.address = @order_address.address
-    #   @order.name = @order_address.dear_name
+    elsif params[:order][:delivery_adress] == "1"
+      @sta = params[:order][:order_delivery].to_i
+      @order_delivery = Delivery.find(@sta)
+      @order.post_code = @order_delivery.post_code
+      @order.address = @order_delivery.address
+      @order.name = @order_delivery.name
     elsif params[:order][:delivery_adress] == "2"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
@@ -51,7 +47,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :payment )
+    params.require(:order).permit(:post_code, :address, :name, :payment, :send_cost, :perfect_price )
   end
 
 end

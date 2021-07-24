@@ -13,7 +13,11 @@
     <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at %></td>
+      <td>
+        <%= link_to admins_order_path(order.id) do %>
+        <%= order.created_at %>
+        <% end %>
+      </td>
         <td>
           <%= link_to admins_customer_path(order.customer.id) do %>
             <%= order.customer.first_name %><%= order.customer.last_name %>

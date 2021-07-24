@@ -30,8 +30,8 @@
 
     <table class="table">
       <tr><th>送料</th><td><%= @order.send_cost %></td></tr>
-      <tr><th>商品小計</th><td><%= @sum  %></td></tr>
-      <tr><th>請求金額</th><td><%= @order.send_cost + @sum %></td></tr>
+      <tr><th>商品小計</th><td><%= @sum.to_s(:delimited)  %></td></tr>
+      <tr><th>請求金額</th><td><%= (@order.send_cost + @sum).to_s(:delimited) %></td></tr>
     </table>
 <!--@order.perfect_price(@order.send_cost + @sum).to_i-->
     <div>

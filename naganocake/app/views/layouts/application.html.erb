@@ -52,6 +52,11 @@
       </nav>
     </header>
     <main>
+      <% flash.each do |message_type, message|%>
+        <div class="flash_message">
+        <%= content_tag :div, message, class: message_type %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
     <footer>

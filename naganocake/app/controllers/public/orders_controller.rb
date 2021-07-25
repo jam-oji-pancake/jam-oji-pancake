@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @order = Order.new(order_params)
     @order.customer_id = @customer.id
-    @order.save
+    if @order.save
     @cart_items = @customer.carts
      @cart_items.each do |carts|
         @order_items = @order.order_items.new
@@ -17,7 +17,12 @@ class Public::OrdersController < ApplicationController
         @order_items.save
      end
      @customer.carts.destroy_all
-    redirect_to finish_path
+     flash[:notice] = "注文が完了しました"
+     redirect_to finish_path
+    else
+     @deliveries = @customer.deliveries
+     render :select
+    end
   end
 
   def index

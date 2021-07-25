@@ -34,8 +34,7 @@
         <td><%= (carts.subtotal_price).to_s(:delimited) %>円</td>
         <td><%= link_to '削除', delete_item_path(carts), method: :delete, data: { confirm: '商品をカートから削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
-      <% (@sum += (carts.subtotal_price)).to_s(:delimited) %>
-
+      <% @sum += carts.subtotal_price %>
     <% end %>
     </tbody>
 

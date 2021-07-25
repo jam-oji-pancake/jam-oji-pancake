@@ -1,6 +1,20 @@
 class Public::OrdersController < ApplicationController
   def create
-    @order = Order.new
+    @customer = current_customer
+    @order = Order.new(order_params)
+    @order.customer_id = @customer.id
+    @order.save
+    @cart_items = @customer.carts
+     @cart_items.each do |carts|
+        @order_items = @order.order_items.new
+        @order_items.order_id = @order.id
+        @order_items.item_id = carts.item.id
+        @order_items.tax_price = carts.item.add_tax_price
+        @order_items.count = carts.count
+        @order_items.save
+     end
+     @customer.carts.destroy_all
+    redirect_to finish_path
   end
 
   def index
@@ -21,6 +35,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @cart_items = @customer.carts
     @order = Order.new(order_params)
+    @order.customer_id = @customer.id
     @order.send_cost = 800
     @order.payment = params[:order][:payment]
     if params[:order][:delivery_adress] == "0"
@@ -47,7 +62,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :payment, :send_cost, :perfect_price )
+    params.require(:order).permit(:post_code, :address, :name, :payment, :send_cost, :perfect_price, :order_status )
   end
 
 end

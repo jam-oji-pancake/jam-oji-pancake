@@ -3,6 +3,7 @@ class Public::ItemsController < ApplicationController
     @all_items = Item.where(is_sale: true)
     @items = @all_items.page(params[:page]).reverse_order
     @genres = Genre.all
+    
   end
 
   def show

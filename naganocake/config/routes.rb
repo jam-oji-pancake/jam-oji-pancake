@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   delete '/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
   delete '/carts/:id/' => 'public/carts#delete_item', as: 'delete_item'
   # delete '/carts/destroy_all' => 'public/carts#destroy_all', as: 'destroy_all'
-  
+
   scope module: :public do
     resources :items, only: [:index, :show ]
   end
@@ -92,6 +92,10 @@ Rails.application.routes.draw do
     # get 'customers/index'
     # get 'customers/show'
     # get 'customers/edit'
+  end
+
+  namespace :admins do
+    resources :order_items, only: [:update]
   end
 
 devise_for :admins, controllers: {

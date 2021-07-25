@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+ 
   root :to => 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
 
@@ -30,10 +31,10 @@ Rails.application.routes.draw do
   #   get 'items/show'
   # end
 
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  # namespace :public do
+  #   get 'homes/top'
+  #   get 'homes/about'
+  # end
 
   scope module: :public do
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]

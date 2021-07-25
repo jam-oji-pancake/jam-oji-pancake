@@ -7,10 +7,10 @@ class Customer < ApplicationRecord
   has_many :deliveries
   has_many :carts
 
-  # enum is_valid: {有効: true, 退会: false }
+  enum is_valid: {退会: true, 有効: false }
 
   def active_for_authentication?
-    super && (self.is_valid == false)
+    super && (self.is_valid == '有効')
   end
 
   def full_name

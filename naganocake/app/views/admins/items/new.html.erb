@@ -1,5 +1,5 @@
 <h2>商品新規登録</h2>
-
+<%= render 'layouts/error', errorinstance: @item %>
 <%= form_with model:@item,url: admins_items_path(@item.id),  local:true do |f| %>
 
 <!--<div>商品画像</div>-->

@@ -1,5 +1,5 @@
 <h2>ジャンル編集</h2>
-
+<%= render 'layouts/error', errorinstance: @genre %>
 <div>
   <%= form_with model: [:admins, @genre], local:true do |f| %>
   <!--%= form_with model:@genre, url:"", local:true do |f| %>-->

@@ -32,7 +32,7 @@
 
       <div class= "btn my-3">
       <%= form_with model:@cart, url: carts_path, local:true do |f| %>
-      <%= f.select :count, [["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"]], include_blank: "個数選択" %>
+      <%= f.select :count, [["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"]] %>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.submit 'カートに入れる', class: "btn btn-success " %>
       <% end %>
@@ -40,4 +40,19 @@
     </div>
   </div>
 </div>
+<!-- 
 
+<div>
+  %= @item.introduction %>
+</div>
+
+<div>
+  ¥%= @item.add_tax_price.to_s(:delimited) %>円(税込）
+</div>
+
+%= form_with model:@cart, url: carts_path, local:true do |f| %>
+%= f.select :count, [["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"]] %>
+%= f.hidden_field :item_id, :value => @item.id %>
+%= f.submit 'カートに入れる'%>
+% end %>
+ -->

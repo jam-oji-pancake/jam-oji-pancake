@@ -1,5 +1,5 @@
 <h2>登録情報編集</h2>
-
+<%= render 'layouts/error', errorinstance: @customer %>
 <%= form_with model:[:admins,@customer], local:true do |f| %>
  <table>
     <thead></thead>

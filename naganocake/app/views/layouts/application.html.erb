@@ -19,14 +19,12 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-            <h2>カスタマーでログイン中</h2>
               <li><%= link_to 'マイページ', mypage_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '商品一覧', items_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'カート', carts_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: "btn btn-outline-secondary text-dark" %></li>
 
             <% elsif admin_signed_in? %>
-            <h2>管理者でログイン中</h2>
               <li><%= link_to '商品一覧', admins_items_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '会員一覧', admins_customers_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '注文一覧', admins_orders_path,class: "btn btn-outline-secondary text-dark" %></li>
@@ -34,7 +32,6 @@
               <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary text-dark" %></li>
 
               <% else %>
-            <h2>未ログイン</h2>
               <li><%= link_to 'About', about_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '商品一覧', items_path,class: "btn btn-outline-secondary text-dark" %></li>
               <li><%= link_to '新規登録', new_customer_registration_path,class: "btn btn-outline-secondary text-dark" %></li>

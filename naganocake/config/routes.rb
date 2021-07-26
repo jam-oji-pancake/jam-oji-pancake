@@ -38,10 +38,10 @@ Rails.application.routes.draw do
   #   get 'items/show'
   # end
 
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  # namespace :public do
+  #   get 'homes/top'
+  #   get 'homes/about'
+  # end
 
   scope module: :public do
     resources :deliveries, only: [:index, :create, :edit, :update, :destroy ]
@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'orders#index'
+    post '/orders',to: 'orders#index',as:'orders'
     resources :orders, only: [:index, :show, :update]
     # get 'orders/index'
     # get 'orders/show'

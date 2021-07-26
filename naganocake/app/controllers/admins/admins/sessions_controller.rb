@@ -24,4 +24,11 @@ class Admins::Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+   before_action :authenticate_admin!
+
+   def after_sign_out_path_for(resource)
+       new_admin_session_path
+   end
+
 end

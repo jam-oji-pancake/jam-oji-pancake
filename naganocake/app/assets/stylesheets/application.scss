@@ -17,3 +17,13 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.flash_message{
+  color: white;/*文字を白に*/
+  background: skyblue;/*背景色*/
+}
+
+.error_explanation{
+  color: white;/*文字を白に*/
+  background: red;/*背景色*/
+}

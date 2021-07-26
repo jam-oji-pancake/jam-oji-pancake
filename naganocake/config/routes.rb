@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'orders#index'
+    post '/orders',to: 'orders#index',as:'orders'
     resources :orders, only: [:index, :show, :update]
     # get 'orders/index'
     # get 'orders/show'

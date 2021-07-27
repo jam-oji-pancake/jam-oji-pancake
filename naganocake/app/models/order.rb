@@ -19,6 +19,10 @@ class Order < ApplicationRecord
     self.order_items.sum(:count)
   end
 
+  # def 
+  #   self.order_items.where(create_status: 3)
+  # end
+
   # def perfect_price
   #   self.send_cost + Cart.subtotal_price
   # end

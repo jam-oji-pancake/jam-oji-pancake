@@ -1,7 +1,8 @@
-
+<div class="ml-5">
 <h2>マイページ</h2>
-<h3>登録情報    <%= link_to '編集する', mypage_edit_path,class: "btn btn-outline-secondary text-dark" %></h3>
-  <table>
+<h4>登録情報　<%= link_to '編集する', mypage_edit_path,class: "btn btn-success text-white" %></h4>
+
+  <table class="table w-25">
     <thead>
     </thead>
     <tbody>
@@ -38,5 +39,5 @@
     </tbody>
   </table>
 
-<%= link_to '配送先', deliveries_path,class: "btn btn-outline-secondary text-dark" %>
-<%= link_to '注文履歴', orders_path,class: "btn btn-outline-secondary text-dark" %>
+<%= link_to '配送先一覧', deliveries_path,class: "btn btn-primary text-white" %>　　　　<%= link_to '注文履歴一覧', orders_path,class: "btn btn-primary text-white" %>
+</div>

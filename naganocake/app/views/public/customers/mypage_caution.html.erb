@@ -1,10 +1,13 @@
-<div>
+<div class="caution mb-5">
   <h2>本当に退会しますか？</h2>
   <div>
-    <p>退会する場合は、『退会する』をクリックしてください。</p>
+    <p>
+    退会すると、会員登録情報や</br>
+    これまでの購入履歴が閲覧できなくなります。</br>
+    退会する場合は、「退会する」をクリックしてください。</br>
+    </p>
   </div>
-  <div>
-    <%= link_to '退会しない', mypage_path %>
-    <%= link_to "退会する", customer_taikai_path, method: :patch, data:{ confirm: '本当に退会しますか？' } %>
+  <div class="mt-5">
+    <%= link_to '退会しない', mypage_path,class: "btn btn-primary text-white" %>　　　　　　<%= link_to "退会する", customer_taikai_path,class: "btn btn btn-danger text-white", method: :patch, data:{ confirm: '本当に退会しますか？' } %>
   </div>
 </div>

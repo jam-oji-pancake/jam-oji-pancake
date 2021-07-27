@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
         @order_items.save
      end
      @customer.carts.destroy_all
-     flash[:notice] = "注文が完了しました"
+     flash[:notice] = "またのご利用お待ちしております"
      redirect_to finish_path
     else
      @deliveries = @customer.deliveries

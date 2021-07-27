@@ -1,3 +1,4 @@
+<div class="ml-5">
 <h2>登録情報編集</h2>
 <%= render 'layouts/error', errorinstance: @customer %>
 <%= form_with model:[:admins,@customer], local:true do |f| %>
@@ -6,17 +7,17 @@
     <tbody>
       <tr>
         <div class="field">
-         <td><%= f.label :"名前" %></td>
-         <td><%= f.label :"(姓)" %> <%= f.text_field :first_name, autofocus: true %></td>
-         <td><%= f.label :"(名)" %> <%= f.text_field :last_name, autofocus: true %></td>
+         <td><%= f.label :"名前" %>　　　　　　　　　　<%= f.label :"(姓)" %> </td>
+         <td><%= f.text_field :first_name, autofocus: true %>　　　<%= f.label :"(名)" %> </td>
+         <td><%= f.text_field :last_name, autofocus: true %></td>
         </div>
       </tr>
 
       <tr>
         <div class="field">
-          <td><%= f.label :"フリガナ" %></td>
-          <td><%= f.label :"(セイ)" %><%= f.text_field :first_kana, autofocus: true %></td>
-          <td><%= f.label :"(メイ)" %> <%= f.text_field :last_kana, autofocus: true %></td>
+          <td><%= f.label :"フリガナ" %>　　　　　　　<%= f.label :"(セイ)" %></td>
+          <td><%= f.text_field :first_kana, autofocus: true %>　　<%= f.label :"(メイ)" %></td>
+          <td><%= f.text_field :last_kana, autofocus: true %></td>
         </div>
       </tr>
 
@@ -49,15 +50,8 @@
       </tr>
 
       <tr>
-        <div class="field">
-         <td><%= f.label :"会員ステータス" %></td>
-         <td><%= f.text_field :phone, autofocus: true %></td>
-        </div>
-      </tr>
-
-      <tr>
+        <td><%= f.label :会員ステータス %></td>
         <td>
-          <%= f.label :会員ステータス %>
           <%= f.radio_button "is_valid","有効"%>
           <%= f.label "is_valid", "有効" %>
           <%= f.radio_button "is_valid","退会" %>
@@ -66,12 +60,13 @@
       </tr>
 
       <tr>
+        <td></td>
         <div class="actions">
-          <td> <%= f.submit "更新" %></td>
+          <td> <%= f.submit "更新",class: 'btn btn-success btn-block' %></td>
         </div>
       </tr>
 
     </tbody>
   </table>
   <% end %>
-
+</div>

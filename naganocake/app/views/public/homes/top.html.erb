@@ -1,3 +1,4 @@
+<div>　</div>
 <div class="container">
   <div class="row">
 
@@ -11,24 +12,31 @@
   </div>
 
   <div class='col-9'>
-    <div class="example">
-    <%= image_tag 'bread_panya.png',:size =>'800x400' %>
-    <p>
-      </br>
-      　ようこそ、ながのCAKEへ！</br>
-      　このサイトは、ケーキ販売のECサイトになります。　　</br>
-      　会員でない方も商品の閲覧は出来ますが、</br>
-      　購入には会員登録が必要です。</br>
-      </br>
-    </p>
+    <div class="masthead">
+      <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-8 align-self-end">
+          <h1 class="text-white font-weight-bold">ようこそ、ながのCAKEへ</h1>
+          <hr class="divider" />
+        </div>
+      <div class="col-lg-8 align-self-baseline">
+        <p class="text-white mb-5">
+        　このサイトは、ケーキ販売のECサイトになります。</br>
+        　会員でない方も商品の閲覧は出来ますが、</br>
+        　購入には会員登録が必要です。</br>
+        </p>
+      </div>
     </div>
-
-    <h2>新着商品</h2>
+    </div>
+  </div>
+   
+    <h2 class="my-4">新着商品</h2>
     <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
-      <div>
+      <div class="m-4">
+        
         <%= link_to item_path(item.id) do %>
-        <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+        <%= attachment_image_tag(item, :image, :fill, 250, 250, fallback: "no_image.jpg") %>
         <p><%= item.name %></p>
         <% end %>
         ￥<%= item.add_tax_price.to_s(:delimited) %>
@@ -36,9 +44,11 @@
       </div>
     <% end %>
       <div class="col align-self-end">
-        <%= link_to '全ての商品を見る', items_path %>
       </div>
     </div>
+    <h4><%= link_to '全ての商品を見る', items_path %></h4>
   </div>
   </div>
 </div>
+</div>
+
